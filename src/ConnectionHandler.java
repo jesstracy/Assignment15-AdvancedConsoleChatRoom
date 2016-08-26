@@ -33,26 +33,26 @@ public class ConnectionHandler implements Runnable {
         //Print output to client
         PrintWriter outputToClient = new PrintWriter(clientSocket.getOutputStream(), true);
 
-        String inputLine;
-        String userNameFromClient;
-        while((inputLine = inputFromClient.readLine()) != null) {
-//            System.out.println("Received message \"" + inputLine + "\" from " + clientSocket.toString());
-            if (!inputLine.startsWith("name=")) {
-                outputToClient.println("You did not send input in the form of \"name=name-of-client\". Reconnect and try again.");
-            } else {
-//                outputToClient.println("Message received! :-)");
-                userNameFromClient = inputLine.split("=")[1];
-//                System.out.println("ON SERVER SIDE-> userName is " + userNameFromClient);
-                String myOutput = userNameFromClient + " said: ";
-                inputLine = inputFromClient.readLine();
-                myOutput += inputLine;
-                System.out.println("* " + myOutput);
-                outputToClient.println("Your message was received! " + myOutput);
-//                while((inputLine = inputFromClient.readLine()) != null) {
-//                    outputToClient.println(userNameFromClient + " said: " + inputLine);
-//                }
-            }
+        String inputLine = inputFromClient.readLine();
+        String userNameFromClient = null;
+        boolean validUserName = true;
+
+        if (!inputLine.startsWith("name=")) {
+            outputToClient.println("You did not send input in the form of \"name=name-of-client\". Reconnect and try again.");
+            validUserName = false;
+        } else {
+//           outputToClient.println("Message received! :-)");
+            userNameFromClient = inputLine.split("=")[1];
+//           System.out.println("ON SERVER SIDE-> userName is " + userNameFromClient);
         }
 
+        while(((inputLine = inputFromClient.readLine()) != null) && validUserName) {
+            String myOutput = userNameFromClient + " said: ";
+//                inputLine = inputFromClient.readLine();
+            myOutput += inputLine;
+            System.out.println("* " + myOutput);
+            outputToClient.println("Your message was received! " + myOutput);
+        }
     }
 }
+

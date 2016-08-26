@@ -30,16 +30,11 @@ public class MyClient {
             // give server your name
             out.println(userName);
 
-            //write a message
-            System.out.print("Write a message to send to the chat room: ");
-            out.println(myScanner.nextLine());
-            String serverResponse = in.readLine();
-            System.out.println("Server's response: " + serverResponse);
-
-            //write a message
-//            out.println("Hello server");
-//            serverResponse = in.readLine();
-//            System.out.println("Server's response: " + serverResponse);
+            boolean keepChatting = true;
+            while (keepChatting) {
+                // get user's message and send it to the chat room
+                keepChatting = myClient.sendUserMessage(myScanner, in, out);
+            }
 
             // close connection
             clientSocket.close();
@@ -55,5 +50,17 @@ public class MyClient {
         System.out.print("What is your name? ");
         userName += myScanner.nextLine();
         return userName;
+    }
+
+    public boolean sendUserMessage(Scanner myScanner, BufferedReader in, PrintWriter out) throws IOException {
+        System.out.print("Write a message to send to the chat room, or write \"exit\" to exit: ");
+        String userMessage = myScanner.nextLine();
+        if (userMessage.equalsIgnoreCase("exit")) {
+            return false;
+        }
+        out.println(userMessage);
+        String serverResponse = in.readLine();
+        System.out.println("Server's response: " + serverResponse);
+        return true;
     }
 }
