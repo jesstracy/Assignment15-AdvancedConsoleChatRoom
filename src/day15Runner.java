@@ -4,5 +4,8 @@
 public class day15Runner {
     public static void main(String[] args) {
         System.out.println("Runner is running!");
+
+        MyServer myServer = new MyServer();
+        myServer.startServer();
     }
 }
