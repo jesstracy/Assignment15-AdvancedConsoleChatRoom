@@ -13,7 +13,7 @@ public class MyServer {
 
             while (true) {
                 Socket clientSocket = serverListener.accept();
-                System.out.println("Connection found!");
+//                System.out.println("Connection found!");
                 //start Thread on this connection
                 ConnectionHandler myHandler = new ConnectionHandler(clientSocket);
 //                handleIncomingConnection(clientSocket);

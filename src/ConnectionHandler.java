@@ -24,9 +24,7 @@ public class ConnectionHandler implements Runnable {
 
     public void handleIncomingConnection(Socket clientSocket) throws IOException {
 
-
-        System.out.println("Now displaying info about who has connected to our server: ");
-        System.out.println("Connection from " + clientSocket.getInetAddress().getHostAddress());
+        System.out.println("New connection from " + clientSocket.getInetAddress().getHostAddress());
 
         //Read in info from client
         BufferedReader inputFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
