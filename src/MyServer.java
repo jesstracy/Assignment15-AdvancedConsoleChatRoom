@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by jessicatracy on 8/26/16.
  */
 public class MyServer {
+    private ArrayList<String> messageArrayList = new ArrayList<String>();
+
     public void startServer() {
         try {
             ServerSocket serverListener = new ServerSocket(8080);
@@ -24,5 +27,17 @@ public class MyServer {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getMessageArrayList() {
+        return messageArrayList;
+    }
+
+    public void setMessageArrayList(ArrayList<String> messageArrayList) {
+        this.messageArrayList = messageArrayList;
+    }
+
+    public void addMessageToMessageArrayList(String message) {
+        messageArrayList.add(message);
     }
 }

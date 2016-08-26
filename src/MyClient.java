@@ -25,7 +25,7 @@ public class MyClient {
             //Ask for the user's name:
             Scanner myScanner = new Scanner(System.in);
             String userName = myClient.getUserName(myScanner);
-            System.out.println(userName);
+//            System.out.println(userName);
 
             // give server your name
             out.println(userName);
@@ -53,14 +53,20 @@ public class MyClient {
     }
 
     public boolean sendUserMessage(Scanner myScanner, BufferedReader in, PrintWriter out) throws IOException {
-        System.out.print("Write a message to send to the chat room, or write \"exit\" to exit: ");
+        System.out.print("Write a message, write \"history\" to show your message history, or write \"exit\" to exit: ");
         String userMessage = myScanner.nextLine();
         if (userMessage.equalsIgnoreCase("exit")) {
             return false;
         }
         out.println(userMessage);
+        // will have to fix here - make a loop here that stops when we get the end statement.
+        System.out.println("Server's response: ");
         String serverResponse = in.readLine();
-        System.out.println("Server's response: " + serverResponse);
+        while (!serverResponse.equals("Tx:History.End")) {
+            System.out.println(serverResponse);
+            serverResponse = in.readLine();
+        }
+//        System.out.println("Server's response: " + serverResponse);
         return true;
     }
 }
