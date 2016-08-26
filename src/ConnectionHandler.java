@@ -52,7 +52,8 @@ public class ConnectionHandler implements Runnable {
                 }
                 outputToClient.println("Tx:History.End");
             } else {
-                String myOutput = userNameFromClient + " said: ";
+                Message clientMessage = new Message();
+                String myOutput = "On " + clientMessage.getDayOfWeek() + " at " + clientMessage.getTime() + ", " + userNameFromClient + " said: ";
                 myOutput += inputLine;
                 System.out.println("* " + myOutput);
                 // add the user's message to the arrayList of messages in myServer

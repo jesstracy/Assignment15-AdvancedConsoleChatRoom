@@ -5,9 +5,9 @@ import java.time.format.DateTimeFormatter;
  * Created by jessicatracy on 8/26/16.
  */
 public class Message {
-    LocalDateTime dateTime;
-    String time;
-    String dayOfWeek;
+    private LocalDateTime dateTime;
+    private String time;
+    private String dayOfWeek;
 
     public Message() {
         dateTime = LocalDateTime.now();
@@ -17,11 +17,28 @@ public class Message {
         dayOfWeek = dateTime.format(myDayOfWeekFormatter);
     }
 
-    public static void main(String[] args) {
-        Message myMessage = new Message();
-        System.out.println(myMessage.dateTime);
-        System.out.println(myMessage.time);
-        System.out.println(myMessage.dayOfWeek);
+/************    Test Formatting *******************/
+//    public static void main(String[] args) {
+//        Message myMessage = new Message();
+//        System.out.println(myMessage.dateTime);
+//        System.out.println(myMessage.time);
+//        System.out.println(myMessage.dayOfWeek);
+//    }
+
+
+    public String getTime() {
+        return time;
     }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
 }
