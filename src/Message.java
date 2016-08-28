@@ -8,8 +8,10 @@ public class Message {
     private LocalDateTime dateTime;
     private String time;
     private String dayOfWeek;
+    private String messageContent;
 
     public Message() {
+//        this.messageContent = messageContent;
         dateTime = LocalDateTime.now();
         DateTimeFormatter myTimeFormatter = DateTimeFormatter.ofPattern("h:mm a");
         time = dateTime.format(myTimeFormatter);
@@ -41,4 +43,13 @@ public class Message {
     public void setDayOfWeek(String dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
+
+    public String getMessageContent() {
+        return messageContent;
+    }
+
+    public void setMessageContent(String messageContent) {
+        this.messageContent = messageContent;
+    }
+
 }

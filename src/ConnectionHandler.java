@@ -47,8 +47,11 @@ public class ConnectionHandler implements Runnable {
 
         while(((inputLine = inputFromClient.readLine()) != null) && validUserName) {
             if (inputLine.equalsIgnoreCase("history")) {
-                for (String message : myServer.getMessageArrayList()) {
-                    outputToClient.println(message);
+//                for (String message : myServer.getMessageArrayList()) {
+//                    outputToClient.println(message);
+//                }
+                for (Message message : myServer.getSetOfMessages()) {
+                    outputToClient.println(message.getMessageContent());
                 }
                 outputToClient.println("Tx:History.End");
             } else {
@@ -57,7 +60,13 @@ public class ConnectionHandler implements Runnable {
                 myOutput += inputLine;
                 System.out.println("* " + myOutput);
                 // add the user's message to the arrayList of messages in myServer
-                myServer.addMessageToMessageArrayList(myOutput);
+//                myServer.addMessageToMessageArrayList(myOutput);
+
+                // Set the message content
+                clientMessage.setMessageContent(myOutput);
+                // add the message to arrayList of messages
+                myServer.addMessageToSetOfMessages(clientMessage);
+
                 outputToClient.println("Your message was received! " + myOutput);
                 outputToClient.println("Tx:History.End");
             }

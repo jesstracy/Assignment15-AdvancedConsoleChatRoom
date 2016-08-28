@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * Created by jessicatracy on 8/26/16.
  */
 public class MyServer {
-    private ArrayList<String> messageArrayList = new ArrayList<String>();
+//    private ArrayList<String> messageArrayList = new ArrayList<String>();
+private ArrayList<Message> setOfMessages = new ArrayList<Message>();
 
     public void startServer() {
         try {
@@ -29,15 +30,23 @@ public class MyServer {
         }
     }
 
-    public ArrayList<String> getMessageArrayList() {
-        return messageArrayList;
+//    public ArrayList<String> getMessageArrayList() {
+//        return messageArrayList;
+//    }
+//
+//    public void setMessageArrayList(ArrayList<String> messageArrayList) {
+//        this.messageArrayList = messageArrayList;
+//    }
+//
+//    public void addMessageToMessageArrayList(String message) {
+//        messageArrayList.add(message);
+//    }
+
+    public ArrayList<Message> getSetOfMessages() {
+        return setOfMessages;
     }
 
-    public void setMessageArrayList(ArrayList<String> messageArrayList) {
-        this.messageArrayList = messageArrayList;
-    }
-
-    public void addMessageToMessageArrayList(String message) {
-        messageArrayList.add(message);
+    public void addMessageToSetOfMessages(Message messageToAdd) {
+        setOfMessages.add(messageToAdd);
     }
 }
